@@ -33,9 +33,10 @@ public class Dashboard {
         // Button for Cattle Registration
         Button registerCattleButton = new Button("Register Cattle");
         registerCattleButton.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #ffffff; -fx-text-fill: black;");
-        
+
         // Action for Cattle Registration button
         registerCattleButton.setOnAction(e -> {
+            System.out.println("Register Cattle button clicked");
             CattleRegistrationForm cattleRegistrationForm = new CattleRegistrationForm(primaryStage, farmerManager);
             cattleRegistrationForm.show();
         });

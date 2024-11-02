@@ -51,28 +51,36 @@ public class CattleRegistrationForm {
         Button registerButton = new Button("Register Cattle");
         registerButton.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #ffffff; -fx-text-fill: black;");
         registerButton.setOnAction(e -> {
-            String breed = breedField.getText().trim();
-            int age = Integer.parseInt(ageField.getText().trim());
-            double weight = Double.parseDouble(weightField.getText().trim());
-            String vaccinationRecords = vaccinationRecordsField.getText().trim();
-            String insurancePolicy = insurancePolicyField.getText().trim();
+            try {
+                String breed = breedField.getText().trim();
+                int age = Integer.parseInt(ageField.getText().trim());
+                double weight = Double.parseDouble(weightField.getText().trim());
+                String vaccinationRecords = vaccinationRecordsField.getText().trim();
+                String insurancePolicy = insurancePolicyField.getText().trim();
 
-            Cattle newCattle = new Cattle(breed, age, weight, vaccinationRecords, insurancePolicy);
-            farmerManager.registerCattle(newCattle); // Assuming FarmerManager has a method to register cattle
+                Cattle newCattle = new Cattle(breed, age, weight, vaccinationRecords, insurancePolicy);
+                farmerManager.registerCattle(newCattle); // Assuming FarmerManager has a method to register cattle
 
-            // Display success message
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Registration Successful");
-            alert.setHeaderText(null);
-            alert.setContentText("Cattle registered successfully with ID: " + newCattle.getId());
-            alert.showAndWait();
+                // Display success message
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Registration Successful");
+                alert.setHeaderText(null);
+                alert.setContentText("Cattle registered successfully with ID: " + newCattle.getId());
+                alert.showAndWait();
 
-            // Clear the fields after registration
-            breedField.clear();
-            ageField.clear();
-            weightField.clear();
-            vaccinationRecordsField.clear();
-            insurancePolicyField.clear();
+                // Clear the fields after registration
+                breedField.clear();
+                ageField.clear();
+                weightField.clear();
+                vaccinationRecordsField.clear();
+                insurancePolicyField.clear();
+            } catch (NumberFormatException ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Input Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Please enter valid numerical values for age and weight.");
+                alert.showAndWait();
+            }
         });
 
         // Add all components to the cattle box
