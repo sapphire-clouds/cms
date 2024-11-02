@@ -21,8 +21,7 @@ public class LoginForm {
         loginBox.setAlignment(Pos.CENTER);
         loginBox.setPadding(new Insets(30));
         loginBox.setStyle(
-            "-fx-background-color: #260101; " +
-            "-fx-background-radius: 15;"
+            "-fx-background-color: #260101; "
         );
 
         Label titleLabel = new Label("Login to Your Account");
