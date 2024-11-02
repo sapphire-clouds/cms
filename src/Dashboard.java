@@ -41,9 +41,31 @@ public class Dashboard {
             cattleRegistrationForm.show();
         });
 
+        // Button for Insurance Policy Management
+        Button manageInsuranceButton = new Button("Manage Insurance Policies");
+        manageInsuranceButton.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #ffffff; -fx-text-fill: black;");
+
+        // Action for Insurance Policy Management button
+        manageInsuranceButton.setOnAction(e -> {
+            System.out.println("Manage Insurance Policies button clicked");
+            InsuranceManagerFX insuranceManager = new InsuranceManagerFX();
+            insuranceManager.start(primaryStage); // Show the insurance manager interface
+        });
+
+        // Button for Claim Submission
+        Button submitClaimButton = new Button("Submit Insurance Claim");
+        submitClaimButton.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #ffffff; -fx-text-fill: black;");
+
+        // Action for Claim Submission button
+        submitClaimButton.setOnAction(e -> {
+            System.out.println("Submit Insurance Claim button clicked");
+            ClaimSubmissionForm claimSubmissionForm = new ClaimSubmissionForm(primaryStage, farmerManager);
+            claimSubmissionForm.show();
+        });
+
         // Add all components to the dashboard box
-        dashboardBox.getChildren().addAll(titleLabel, registerCattleButton);
-        
+        dashboardBox.getChildren().addAll(titleLabel, registerCattleButton, manageInsuranceButton, submitClaimButton);
+
         // Set scene size and show
         Scene dashboardScene = new Scene(dashboardBox, 800, 600);
         primaryStage.setScene(dashboardScene);
