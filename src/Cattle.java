@@ -5,7 +5,7 @@ import java.util.UUID;
 public class Cattle {
     private String id;
     private String breed;
-    private int age; // in years
+    private int age; 
     private double weight; // in kg
     private String vaccinationRecords;
     private String insurancePolicy;

@@ -63,8 +63,19 @@ public class Dashboard {
             claimSubmissionForm.show();
         });
 
+        // New button for Viewing Cattle Ownership
+        Button viewOwnershipButton = new Button("View Cattle Ownership");
+        viewOwnershipButton.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #ffffff; -fx-text-fill: black;");
+
+        // Action for View Cattle Ownership button
+        viewOwnershipButton.setOnAction(e -> {
+            System.out.println("View Cattle Ownership button clicked");
+            CattleOwnershipView cattleOwnershipView = new CattleOwnershipView(primaryStage, farmerManager);
+            cattleOwnershipView.show(); // Assuming this class is defined to handle cattle ownership display
+        });
+
         // Add all components to the dashboard box
-        dashboardBox.getChildren().addAll(titleLabel, registerCattleButton, manageInsuranceButton, submitClaimButton);
+        dashboardBox.getChildren().addAll(titleLabel, registerCattleButton, manageInsuranceButton, submitClaimButton, viewOwnershipButton);
 
         // Set scene size and show
         Scene dashboardScene = new Scene(dashboardBox, 800, 600);
