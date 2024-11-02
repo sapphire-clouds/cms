@@ -54,9 +54,34 @@ public class ClaimSubmissionForm {
             reasonField.clear();
         });
 
+        // Button to check insurance status
+        Button checkStatusButton = new Button("Check Insurance Status");
+        grid.add(checkStatusButton, 0, 3, 2, 1);
+        checkStatusButton.setStyle("-fx-background-color: #ffffff; -fx-text-fill: black;");
+
+        checkStatusButton.setOnAction(e -> {
+            String cattleID = cattleIDField.getText();
+            String status = checkInsuranceStatus(cattleID);
+            System.out.println("Insurance status for Cattle ID " + cattleID + ": " + status);
+            // Optionally display the status in a dialog or label
+            Label statusLabel = new Label("Insurance status: " + status);
+            statusLabel.setTextFill(Color.WHITE);
+            grid.add(statusLabel, 0, 4, 2, 1);
+        });
+
         Scene scene = new Scene(grid, 400, 300);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Claim Submission");
         primaryStage.show();
+    }
+
+    private String checkInsuranceStatus(String cattleID) {
+        // Simulated logic for insurance status
+        // In a real application, you would query a database or service
+        if (cattleID.isEmpty()) {
+            return "No Cattle ID provided";
+        }
+        // For demonstration purposes, randomly returning "Pending" or "Approved"
+        return Math.random() < 0.5 ? "Pending" : "Approved";
     }
 }
